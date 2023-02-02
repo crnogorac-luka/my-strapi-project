@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "name": "Post",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "content": {
+      "type": "richtext",
+      "required": true,
+      "minLength": 6,
+      "default": "Unesite sadržaj"
+    },
+    "title": {
+      "type": "string",
+      "default": "Moja nova objava",
+      "required": true
+    },
+    "category": {
+      "type": "string"
+    },
+    "coverPhoto": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "document": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "author": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "isPublished": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
